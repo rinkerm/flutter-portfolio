@@ -2,17 +2,17 @@ import 'habit.dart';
 class CheckInManager{
   CheckInManager._()
   {
-    sobjHabits = <Habit>{};
+    _habits = <Habit>{};
   }
   static final instance = CheckInManager._();
-  late Set<Habit> sobjHabits;
+  late Set<Habit> _habits;
 
   Future<void> addCheckIns() async{
-    final DateTime dtmNow = DateTime.now();
-    final DateTime dtmCheckIn = DateTime(dtmNow.year,dtmNow.month,dtmNow.day);
+    final DateTime now = DateTime.now();
+    final DateTime checkInDate = DateTime(now.year,now.month,now.day);
 
-    for( final objHabit in sobjHabits){
-      await objHabit.addCheckIn(dtmCheckIn);
+    for( final habit in _habits){
+      await habit.addCheckIn(checkInDate);
     }
   }
 }
